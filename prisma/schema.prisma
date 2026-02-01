@@ -6,73 +6,31 @@ datasource db {
   provider = "postgresql"
 }
 
-
-model User {
-  id        String   @id @default(uuid())
-  name      String
-  email     String   @unique
-  role      Role     @default(RANGER)
-  createdAt DateTime @default(now())
-}
-
 model Animal {
-  id          String   @id @default(uuid())
-  name        String
-  species     String
-  age         Int?
-  gender      String?
-  status      String   @default("Healthy")
-  locationId  String?
-  location    Location? @relation(fields: [locationId], references: [id])
-  healthLogs  HealthRecord[]
-  tracking    TrackingLog[]
-  createdAt   DateTime @default(now())
+  id        Int     @id @default(autoincrement())
+  name      String
+  speciesId Int
+
+  @@map("animals")
 }
 
-model HealthRecord {
-  id        String   @id @default(uuid())
-  animalId  String
-  animal    Animal   @relation(fields: [animalId], references: [id])
-  notes     String
-  condition String
-  treatedBy String
-  date      DateTime @default(now())
-}
+model Species {
+  id   Int    @id @default(autoincrement())
+  name String
 
-model Alert {
-  id        String   @id @default(uuid())
-  type      String
-  message   String
-  severity  String
-  cameraId  String?
-  createdAt DateTime @default(now())
+  @@map("species")
 }
 
 model Camera {
-  id        String   @id @default(uuid())
-  name      String
-  location  String
-  status    String   @default("Active")
+  id       Int    @id @default(autoincrement())
+  location String
+
+  @@map("cameras")
 }
 
-model Location {
-  id      String   @id @default(uuid())
-  name    String
-  zone    String
-  animals Animal[]
-}
+model Alert {
+  id      Int    @id @default(autoincrement())
+  message String
 
-model TrackingLog {
-  id        String   @id @default(uuid())
-  animalId  String
-  animal    Animal   @relation(fields: [animalId], references: [id])
-  latitude  Float
-  longitude Float
-  timestamp DateTime @default(now())
-}
-
-enum Role {
-  ADMIN
-  RANGER
-  VET
+  @@map("alerts")
 }

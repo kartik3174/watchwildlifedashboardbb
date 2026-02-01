@@ -4,16 +4,23 @@ import { TrackingMap } from "@/components/tracking/tracking-map"
 import { WebcamDetector } from "@/components/tracking/webcam-detector"
 import { Eye } from "lucide-react"
 import { LeafDecoration } from "@/components/leaf-decoration"
+import { createClient } from "@/lib/supabase/server"
 
 export const metadata: Metadata = {
   title: "Wildlife Tracking | W.A.T.C.H",
   description: "Track and monitor wildlife in real-time",
 }
 
-export default function TrackingPage() {
+export default async function TrackingPage() {
+  const supabase = createClient()
+
+  // 🔥 Fetch camera locations from database
+  const { data: cameras } = await supabase
+    .from("cameras")
+    .select("id, location")
+
   return (
     <div className="container mx-auto py-6 space-y-6 relative">
-      {/* Decorative leaf elements */}
       <LeafDecoration position="top-right" size="lg" opacity={0.1} className="hidden lg:block" />
       <LeafDecoration position="bottom-left" size="md" rotation={45} opacity={0.1} className="hidden lg:block" />
 
@@ -25,7 +32,8 @@ export default function TrackingPage() {
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         <div className="order-2 lg:order-1">
-          <TrackingMap />
+          {/* Pass cameras to map */}
+          <TrackingMap cameras={cameras || []} />
         </div>
         <div className="order-1 lg:order-2">
           <WebcamDetector />
