@@ -1,0 +1,513 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+
+    --primary: 142.1 76.2% 36.3%;
+    --primary-foreground: 355.7 100% 97.3%;
+
+    --secondary: 240 4.8% 95.9%;
+    --secondary-foreground: 240 5.9% 10%;
+
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
+
+    --accent: 240 4.8% 95.9%;
+    --accent-foreground: 240 5.9% 10%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --ring: 142.1 76.2% 36.3%;
+
+    --radius: 0.5rem;
+
+    /* Wildlife specific colors */
+    --wildlife-green: 120 45% 34%;
+    --wildlife-orange: 25 100% 48%;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 142.1 70.6% 45.3%;
+    --primary-foreground: 144.9 80.4% 10%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 142.4 71.8% 29.2%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+    touch-action: manipulation;
+    height: 100%;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.8)),
+      url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%232e7d32' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E"),
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Cpath d='M20 20 L40 20 L40 40 L20 40 Z' fill='none' stroke='%232e7d32' stroke-width='0.5' stroke-opacity='0.03'/%3E%3Cpath d='M50 30 L60 30 L60 40 L50 40 Z' fill='none' stroke='%232e7d32' stroke-width='0.5' stroke-opacity='0.03'/%3E%3Cpath d='M0 70 L10 70 L10 80 L0 80 Z' fill='none' stroke='%232e7d32' stroke-width='0.5' stroke-opacity='0.03'/%3E%3Cpath d='M70 50 L80 50 L80 60 L70 60 Z' fill='none' stroke='%232e7d32' stroke-width='0.5' stroke-opacity='0.03'/%3E%3C/svg%3E"),
+      radial-gradient(circle at top right, hsl(120, 45%, 97%) 0%, hsl(120, 40%, 94%) 40%, hsl(120, 35%, 90%) 100%);
+    background-attachment: fixed;
+    background-size: cover;
+    min-height: 100vh;
+    height: auto;
+    overflow-x: hidden;
+  }
+
+  .dark body {
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.7)),
+      url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%232e7d32' fill-opacity='0.1' fill-rule='evenodd'/%3E%3C/svg%3E"),
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Cpath d='M20 20 L40 20 L40 40 L20 40 Z' fill='none' stroke='%232e7d32' stroke-width='0.5' stroke-opacity='0.05'/%3E%3Cpath d='M50 30 L60 30 L60 40 L50 40 Z' fill='none' stroke='%232e7d32' stroke-width='0.5' stroke-opacity='0.05'/%3E%3Cpath d='M0 70 L10 70 L10 80 L0 80 Z' fill='none' stroke='%232e7d32' stroke-width='0.5' stroke-opacity='0.05'/%3E%3Cpath d='M70 50 L80 50 L80 60 L70 60 Z' fill='none' stroke='%232e7d32' stroke-width='0.5' stroke-opacity='0.05'/%3E%3C/svg%3E"),
+      radial-gradient(circle at top right, hsl(120, 30%, 15%) 0%, hsl(120, 25%, 12%) 40%, hsl(120, 20%, 8%) 100%);
+    background-attachment: fixed;
+    background-size: cover;
+  }
+
+  /* Wildlife-themed scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: hsl(var(--muted));
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: hsl(var(--primary) / 0.6);
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--primary) / 0.8);
+  }
+}
+
+/* Wildlife-specific utility classes */
+.text-wildlife-orange {
+  color: #f56a00;
+}
+
+.bg-wildlife-orange {
+  background-color: #f56a00;
+}
+
+.border-wildlife-orange {
+  border-color: #f56a00;
+}
+
+.text-wildlife-green {
+  color: #2e7d32;
+}
+
+.bg-wildlife-green {
+  background-color: #2e7d32;
+}
+
+.border-wildlife-green {
+  border-color: #2e7d32;
+}
+
+/* Leaf pattern background */
+.leaf-pattern {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'%3E%3Cpath d='M30 30 C35 25, 40 15, 30 5 C20 15, 25 25, 30 30 C35 35, 45 40, 55 30 C45 20, 35 25, 30 30 C25 35, 15 40, 5 30 C15 20, 25 25, 30 30 C25 35, 20 45, 30 55 C40 45, 35 35, 30 30' fill='none' stroke='%232e7d32' stroke-width='0.5' stroke-opacity='0.1'/%3E%3C/svg%3E");
+}
+
+@layer components {
+  .status-excellent {
+    @apply bg-emerald-500 hover:bg-emerald-600;
+  }
+  .status-good {
+    @apply bg-blue-500 hover:bg-blue-600;
+  }
+  .status-fair {
+    @apply bg-amber-500 hover:bg-amber-600;
+  }
+  .status-poor {
+    @apply bg-red-500 hover:bg-red-600;
+  }
+  .status-critical {
+    @apply bg-purple-500 hover:bg-purple-600;
+  }
+
+  .priority-urgent {
+    @apply bg-red-500 hover:bg-red-600;
+  }
+  .priority-high {
+    @apply bg-orange-500 hover:bg-orange-600;
+  }
+  .priority-medium {
+    @apply bg-amber-500 hover:bg-amber-600;
+  }
+  .priority-low {
+    @apply bg-emerald-500 hover:bg-emerald-600;
+  }
+
+  /* Enhanced card styling for wildlife theme */
+  .card {
+    @apply bg-card/95 backdrop-blur-sm border-2;
+    box-shadow: 0 4px 15px -3px rgba(0, 0, 0, 0.1), 0 2px 8px -2px rgba(0, 0, 0, 0.05);
+  }
+
+  /* Wildlife-themed elements */
+  .wildlife-card {
+    @apply border-wildlife-green bg-white dark:bg-gray-800;
+  }
+
+  .wildlife-button-primary {
+    @apply bg-wildlife-green text-white hover:bg-wildlife-green/90;
+  }
+
+  .wildlife-button-secondary {
+    @apply bg-wildlife-orange text-white hover:bg-wildlife-orange/90;
+  }
+
+  /* Leaf-shaped button */
+  .leaf-button {
+    clip-path: ellipse(50% 50% at 50% 50%);
+    @apply bg-wildlife-green text-white hover:bg-wildlife-green/90 transition-all;
+  }
+
+  .leaf-button:hover {
+    clip-path: ellipse(51% 51% at 50% 50%);
+  }
+
+  /* Mobile navigation */
+  .mobile-nav-button {
+    @apply fixed z-50 top-4 left-4 bg-primary text-primary-foreground rounded-full p-3 shadow-lg;
+  }
+
+  .mobile-nav-overlay {
+    @apply fixed inset-0 z-40 bg-black/50 backdrop-blur-sm;
+  }
+
+  .mobile-nav-panel {
+    @apply fixed inset-y-0 left-0 z-50 w-3/4 max-w-xs bg-sidebar border-r border-sidebar-border shadow-xl;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease-in-out;
+  }
+
+  .mobile-nav-panel.open {
+    transform: translateX(0);
+  }
+
+  /* Responsive utilities */
+  .responsive-container {
+    @apply w-full px-4 sm:px-6 lg:px-8 mx-auto max-w-7xl;
+  }
+
+  .responsive-grid {
+    @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4;
+  }
+
+  .responsive-padding {
+    @apply p-2 sm:p-4 md:p-6 lg:p-8;
+  }
+
+  /* Leaf decorations */
+  .leaf-decoration {
+    @apply absolute pointer-events-none opacity-10;
+  }
+
+  .leaf-top-right {
+    @apply top-0 right-0 -rotate-12;
+  }
+
+  .leaf-bottom-left {
+    @apply bottom-0 left-0 rotate-45;
+  }
+
+  .leaf-decoration-container {
+    @apply relative overflow-hidden;
+  }
+
+  .leaf-card {
+    @apply relative border-2 rounded-lg shadow-md overflow-hidden;
+  }
+
+  /* Responsive adjustments for mobile */
+  @media (max-width: 768px) {
+    .mobile-nav-button {
+      @apply top-3 left-3 p-2.5;
+    }
+
+    .mobile-nav-button svg {
+      @apply h-5 w-5;
+    }
+
+    /* Prevent content from being cut off on smaller screens */
+    .container {
+      @apply px-4;
+    }
+
+    /* Improve spacing on mobile */
+    .space-y-6 > * {
+      margin-top: 1.25rem;
+      margin-bottom: 1.25rem;
+    }
+  }
+
+  /* Additional mobile fixes */
+  @media (max-width: 640px) {
+    .card-header-mobile {
+      @apply flex-col items-start gap-2;
+    }
+
+    /* Fix for buttons stacking on mobile */
+    .mobile-button-fix {
+      @apply flex-col sm:flex-row w-full;
+    }
+
+    .mobile-button-fix > * {
+      @apply w-full mb-2 sm:mb-0 sm:w-auto;
+    }
+  }
+
+  /* Fix for overflow issues */
+  .overflow-fix {
+    @apply max-w-full overflow-hidden;
+  }
+}
+
+/* Custom scrollbar styles */
+@layer utilities {
+  .scrollbar-thin {
+    scrollbar-width: thin;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    background-color: rgba(156, 163, 175, 0.5);
+    border-radius: 9999px;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(156, 163, 175, 0.7);
+  }
+}
+
+/* Device-specific adjustments */
+@media (max-width: 640px) {
+  html {
+    font-size: 14px;
+  }
+}
+
+@media (min-width: 641px) and (max-width: 768px) {
+  html {
+    font-size: 15px;
+  }
+}
+
+@media (min-width: 769px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+/* Fullscreen mode styles */
+:fullscreen,
+::backdrop {
+  background-color: white;
+}
+
+.dark :fullscreen,
+.dark ::backdrop {
+  background-color: hsl(222.2, 84%, 4.9%);
+}
+
+/* Fix for z-index issues */
+.z-fix-1 {
+  z-index: 1;
+}
+
+.z-fix-2 {
+  z-index: 2;
+}
+
+.z-fix-3 {
+  z-index: 3;
+}
+
+/* Fix for content overflow */
+.content-container {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* Improved spacing for components */
+.component-spacing > * + * {
+  margin-top: 1rem;
+}
+
+@media (min-width: 768px) {
+  .component-spacing > * + * {
+    margin-top: 1.5rem;
+  }
+}
+
+/* Fix for modal positioning */
+.modal-fix {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 90vw;
+  max-height: 90vh;
+  overflow: auto;
+}
+
+/* Prevent text overflow */
+.text-ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Improved card layout */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1rem;
+}
+
+@media (min-width: 768px) {
+  .card-grid {
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 1.5rem;
+  }
+}
+
+/* Fix for flex layouts */
+.flex-fix {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+@media (min-width: 640px) {
+  .flex-fix {
+    flex-wrap: nowrap;
+    gap: 1rem;
+  }
+}
+
+/* Improved form layout */
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+@media (min-width: 640px) {
+  .form-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+}
+
+/* Fix for image aspect ratios */
+.aspect-fix {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%; /* 16:9 aspect ratio */
+}
+
+.aspect-fix > * {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Fix for button alignment */
+.button-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+@media (min-width: 640px) {
+  .button-group {
+    flex-wrap: nowrap;
+  }
+}
+
+/* Fix for table overflow */
+.table-container {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Fix for sticky elements */
+.sticky-top {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background-color: inherit;
+}
+
+/* Fix for absolute positioned elements */
+.absolute-container {
+  position: relative;
+}
+
+.absolute-container > .absolute {
+  position: absolute;
+}
