@@ -1,6 +1,6 @@
 "use server"
 
-import { getSupabaseServerClient } from "@/lib/supabase"
+import { getSupabaseServerClient } from "@/lib/supabase/server"
 
 export type Animal = {
   id: number
