@@ -14,7 +14,6 @@ export const metadata: Metadata = {
 export default async function TrackingPage() {
   const supabase = createClient()
 
-  // 🔥 Fetch camera locations from database
   const { data: cameras } = await supabase
     .from("cameras")
     .select("id, location")
@@ -24,20 +23,11 @@ export default async function TrackingPage() {
       <LeafDecoration position="top-right" size="lg" opacity={0.1} className="hidden lg:block" />
       <LeafDecoration position="bottom-left" size="md" rotation={45} opacity={0.1} className="hidden lg:block" />
 
-      <PageHeader
-        title="Wildlife Tracking"
-        description="Monitor wildlife locations and detect intruders in real-time"
-        icon={<Eye className="h-6 w-6" />}
-      />
+      <PageHeader title="Wildlife Tracking" description="Monitor wildlife locations" icon={<Eye className="h-6 w-6" />} />
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <div className="order-2 lg:order-1">
-          {/* Pass cameras to map */}
-          <TrackingMap cameras={cameras || []} />
-        </div>
-        <div className="order-1 lg:order-2">
-          <WebcamDetector />
-        </div>
+        <TrackingMap cameras={cameras || []} />
+        <WebcamDetector />
       </div>
     </div>
   )
